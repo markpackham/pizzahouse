@@ -21,6 +21,7 @@
         </style>
     </head>
     <body class="antialiased">
-        <p>Pizzas</p>
+        <h1>Pizza List</h1>
+        <p>{{$type}} - {{$base}} - {{$price}}</p>
     </body>
 </html>
