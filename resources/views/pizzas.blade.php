@@ -23,5 +23,10 @@
     <body class="antialiased">
         <h1>Pizza List</h1>
         <p>{{$type}} - {{$base}} - {{$price}}</p>
+        @if($price > 15)
+            <p>This pizza is expensive</p>
+        @elseif($price < 5)
+            <p>This pizza is cheap</p>
+        @endif
     </body>
 </html>
