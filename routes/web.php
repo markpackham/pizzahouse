@@ -20,4 +20,6 @@ Route::get('/', function () {
 
 // pizza routes
 Route::get('/pizzas', [PizzaController::class, 'index']);
+// create must be above show or you'll never see it
+Route::get('/pizzas/create', [PizzaController::class, 'create']);
 Route::get('/pizzas/{id}', [PizzaController::class, 'show']);
