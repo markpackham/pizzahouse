@@ -9,4 +9,10 @@ class Pizza extends Model
 {
     use HasFactory;
 
+    // turn toppings into a JSON string in the database
+    // then turn it into an array on the site itself
+    protected $casts = [
+        'toppings' => 'array',
+    ];
+
 }

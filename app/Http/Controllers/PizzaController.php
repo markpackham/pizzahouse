@@ -39,8 +39,19 @@ class PizzaController extends Controller
         $pizza->name = request('name');
         $pizza->type = request('type');
         $pizza->base = request('base');
+        // toppings is an array and needs to be stored as JSON in the database
+        // we must cast it in th Pizza model
+        $pizza->toppings = request('toppings');
         $pizza->save();
 
         return redirect('/')->with('mssg', 'Thanks for your order!');
+    }
+
+    public function destory($id)
+    {
+        $pizza = Pizza::findOrFail($id);
+        $pizza->delete();
+
+        return redirect('/pizzas');
     }
 }
