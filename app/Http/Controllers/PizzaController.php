@@ -22,8 +22,9 @@ class PizzaController extends Controller
 
     public function show($id)
     {
+        $pizza = Pizza::findOrFail($id);
         // use the $id variable to query the db for a record
-        return view('pizzas.show', ['id' => $id]);
+        return view('pizzas.show', ['pizza' => $pizza]);
     }
 
     public function create()
@@ -31,4 +32,15 @@ class PizzaController extends Controller
         return view('pizzas.create');
     }
 
+    // save pizza you have created
+    public function store()
+    {
+        $pizza = new Pizza();
+        $pizza->name = request('name');
+        $pizza->type = request('type');
+        $pizza->base = request('base');
+        $pizza->save();
+
+        return redirect('/')->with('mssg', 'Thanks for your order!');
+    }
 }
