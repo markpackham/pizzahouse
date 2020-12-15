@@ -19,12 +19,17 @@ Route::get('/', function () {
 });
 
 // pizza routes
-Route::get('/pizzas', [PizzaController::class, 'index'])->middleware('auth');
+Route::get('/pizzas', [PizzaController::class, 'index'])->name('pizzas.index')->middleware('auth');
 // create must be above show or you'll never see it
-Route::get('/pizzas/create', [PizzaController::class, 'create']);
-Route::post('/pizzas', [PizzaController::class, 'store']);
-Route::get('/pizzas/{id}', [PizzaController::class, 'show']);
-Route::delete('/pizzas/{id}', [PizzaController::class, 'destory']);
+Route::get('/pizzas/create', [PizzaController::class, 'create'])->name('pizzas.create');
+Route::post('/pizzas', [PizzaController::class, 'store'])->name('pizzas.store');
+Route::get('/pizzas/{id}', [PizzaController::class, 'show'])->name('pizzas.show')->middleware('auth');
+Route::delete('/pizzas/{id}', [PizzaController::class, 'destory'])->name('pizzas.destory')->middleware('auth');
+
+// forbid registeration form from showing
+// Auth::routes([
+//     'register' => false,
+// ]);
 
 Auth::routes();
 

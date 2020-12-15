@@ -7,6 +7,13 @@ use App\Models\Pizza;
 class PizzaController extends Controller
 {
 
+    // creating this constructor would for use to be logged in to do anything
+    // which isn't ideal, better to set auth in specific routes instead
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
     public function index()
     {
 
